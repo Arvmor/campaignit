@@ -5,12 +5,16 @@ use std::{
 
 use crate::individuals::Individual;
 
+/// The world of the universe
 pub struct World {
+    /// The individuals of the world
     pub individuals: Vec<Individual>,
+    /// The time of the world
     pub time: u64,
 }
 
 impl World {
+    /// Create a new world
     pub fn new(stats: HashMap<String, u64>) -> Result<Self, SystemTimeError> {
         Ok(Self {
             individuals: Vec::new(),
