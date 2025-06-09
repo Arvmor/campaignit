@@ -27,7 +27,6 @@ pub enum Age {
     Teenager,
     Adult,
     Senior,
-    Elderly,
 }
 
 /// The marital status of the individual
