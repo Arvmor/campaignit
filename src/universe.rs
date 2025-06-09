@@ -1,9 +1,8 @@
+use crate::{individuals::Individual, statics::Statics};
 use std::{
     collections::HashMap,
     time::{SystemTime, SystemTimeError, UNIX_EPOCH},
 };
-
-use crate::individuals::Individual;
 
 /// The world of the universe
 pub struct World {
@@ -15,11 +14,13 @@ pub struct World {
 
 impl World {
     /// Create a new world
-    pub fn new(stats: HashMap<String, u64>) -> Result<Self, SystemTimeError> {
-        Ok(Self {
-            individuals: Vec::new(),
-            time: SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs(),
-        })
+    pub fn new(stats: HashMap<Statics, u64>, population: u64) -> Result<Self, SystemTimeError> {
+        let time = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
+        let mut individuals = Vec::new();
+
+        // Create Individuals tied to the statics
+
+        Ok(Self { individuals, time })
     }
 }
 
@@ -30,7 +31,7 @@ mod universe_tests {
     #[test]
     fn test_new_world() {
         let stats = HashMap::new();
-        let world = World::new(stats);
+        let world = World::new(stats, 1);
 
         assert!(world.is_ok());
     }

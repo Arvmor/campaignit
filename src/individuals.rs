@@ -1,8 +1,6 @@
 pub struct Individual {
     /// The age of the individual
-    pub age: u8,
-    /// The income of the individual
-    pub income: u32,
+    pub age: Age,
     /// The class of the individual
     pub class: Class,
     /// The gender of the individual
@@ -21,7 +19,19 @@ pub struct Individual {
     pub marital_status: MaritalStatus,
 }
 
+/// The age of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
+pub enum Age {
+    Newborn,
+    Child,
+    Teenager,
+    Adult,
+    Senior,
+    Elderly,
+}
+
 /// The marital status of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum MaritalStatus {
     Single,
     Dating,
@@ -30,6 +40,7 @@ pub enum MaritalStatus {
 }
 
 /// The education of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Education {
     HighSchool,
     University,
@@ -37,6 +48,7 @@ pub enum Education {
 }
 
 /// The religion of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Religion {
     Atheist,
     Christian,
@@ -46,6 +58,7 @@ pub enum Religion {
 }
 
 /// The property of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Property {
     Owned,
     Rented,
@@ -53,6 +66,7 @@ pub enum Property {
 }
 
 /// The gender of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Gender {
     Male,
     TowardsMale,
@@ -62,6 +76,7 @@ pub enum Gender {
 }
 
 /// The region of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Region {
     NorthernAfrica,
     SubSaharanAfrica,
@@ -82,6 +97,7 @@ pub enum Region {
 }
 
 /// The class of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Class {
     LowerClass,
     MiddleClass,
@@ -91,6 +107,7 @@ pub enum Class {
 }
 
 /// The vehicle of the individual
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Vehicle {
     MultiVehicle,
     LowTier,
