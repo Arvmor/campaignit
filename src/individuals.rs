@@ -1,16 +1,27 @@
 pub struct Individual {
+    /// The age of the individual
     pub age: u8,
+    /// The income of the individual
     pub income: u32,
+    /// The class of the individual
     pub class: Class,
+    /// The gender of the individual
     pub gender: Gender,
+    /// The region of the individual
     pub region: Region,
+    /// The property of the individual
     pub property: Property,
+    /// The religion of the individual
     pub religion: Religion,
+    /// The vehicle of the individual
     pub vehicle: Option<Vehicle>,
+    /// The education of the individual
     pub education: Option<Education>,
+    /// The marital status of the individual
     pub marital_status: MaritalStatus,
 }
 
+/// The marital status of the individual
 pub enum MaritalStatus {
     Single,
     Dating,
@@ -18,12 +29,14 @@ pub enum MaritalStatus {
     Divorced,
 }
 
+/// The education of the individual
 pub enum Education {
     HighSchool,
     University,
     Postgraduate,
 }
 
+/// The religion of the individual
 pub enum Religion {
     Atheist,
     Christian,
@@ -32,12 +45,14 @@ pub enum Religion {
     Hindu,
 }
 
+/// The property of the individual
 pub enum Property {
     Owned,
     Rented,
     Shared,
 }
 
+/// The gender of the individual
 pub enum Gender {
     Male,
     TowardsMale,
@@ -46,6 +61,7 @@ pub enum Gender {
     Female,
 }
 
+/// The region of the individual
 pub enum Region {
     NorthernAfrica,
     SubSaharanAfrica,
@@ -65,6 +81,7 @@ pub enum Region {
     Antarctica,
 }
 
+/// The class of the individual
 pub enum Class {
     LowerClass,
     MiddleClass,
@@ -73,6 +90,7 @@ pub enum Class {
     Elite,
 }
 
+/// The vehicle of the individual
 pub enum Vehicle {
     MultiVehicle,
     LowTier,
