@@ -1,28 +1,80 @@
+use crate::statics::Statics;
+use rand::distr::{Distribution, weighted::WeightedIndex};
 use serde::Deserialize;
+use std::{collections::HashMap, error::Error};
+use strum::{EnumCount, EnumIter};
 
-pub struct Individual {
+/// The individual of the universe
+#[derive(Debug)]
+pub struct Individual<'a> {
     /// The age of the individual
-    pub age: Age,
+    pub age: &'a Age,
     /// The class of the individual
-    pub class: Class,
+    pub class: &'a Class,
     /// The gender of the individual
-    pub gender: Gender,
+    pub gender: &'a Gender,
     /// The region of the individual
-    pub region: Region,
+    pub region: &'a Region,
     /// The property of the individual
-    pub property: Property,
+    pub property: &'a Property,
     /// The religion of the individual
-    pub religion: Religion,
+    pub religion: &'a Religion,
     /// The vehicle of the individual
-    pub vehicle: Option<Vehicle>,
+    pub vehicle: &'a Vehicle,
     /// The education of the individual
-    pub education: Option<Education>,
+    pub education: &'a Education,
     /// The marital status of the individual
-    pub marital_status: MaritalStatus,
+    pub marital_status: &'a MaritalStatus,
+}
+
+// Macro to extract stats for the fields
+macro_rules! extract_stats {
+    ($stats:ident, $field:ident, $field_name:ident) => {
+        let mut samples = Vec::with_capacity($field::COUNT);
+        let mut weights = Vec::with_capacity($field::COUNT);
+
+        for (f, w) in $stats {
+            if let Statics::$field(f) = f {
+                samples.push(f);
+                weights.push(w);
+            }
+        }
+
+        // Weighted Random Choice
+        let position = WeightedIndex::new(weights)?.sample(&mut rand::rng());
+        let $field_name = samples[position];
+    };
+}
+
+impl<'a> Individual<'a> {
+    /// Create a new individual
+    pub fn new(stats: &'a HashMap<Statics, u64>) -> Result<Self, Box<dyn Error>> {
+        extract_stats!(stats, Age, age);
+        extract_stats!(stats, Class, class);
+        extract_stats!(stats, Gender, gender);
+        extract_stats!(stats, Region, region);
+        extract_stats!(stats, Property, property);
+        extract_stats!(stats, Religion, religion);
+        extract_stats!(stats, Vehicle, vehicle);
+        extract_stats!(stats, Education, education);
+        extract_stats!(stats, MaritalStatus, marital_status);
+
+        Ok(Self {
+            age,
+            class,
+            gender,
+            region,
+            property,
+            religion,
+            vehicle,
+            education,
+            marital_status,
+        })
+    }
 }
 
 /// The age of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Age {
     Newborn,
     Child,
@@ -32,7 +84,7 @@ pub enum Age {
 }
 
 /// The marital status of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum MaritalStatus {
     Single,
     Dating,
@@ -41,15 +93,16 @@ pub enum MaritalStatus {
 }
 
 /// The education of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Education {
     HighSchool,
     University,
     Postgraduate,
+    NoEducation,
 }
 
 /// The religion of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Religion {
     Atheist,
     Christian,
@@ -59,7 +112,7 @@ pub enum Religion {
 }
 
 /// The property of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Property {
     Owned,
     Rented,
@@ -67,7 +120,7 @@ pub enum Property {
 }
 
 /// The gender of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Gender {
     Male,
     TowardsMale,
@@ -77,7 +130,7 @@ pub enum Gender {
 }
 
 /// The region of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Region {
     NorthernAfrica,
     SubSaharanAfrica,
@@ -98,7 +151,7 @@ pub enum Region {
 }
 
 /// The class of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Class {
     LowerClass,
     MiddleClass,
@@ -108,10 +161,11 @@ pub enum Class {
 }
 
 /// The vehicle of the individual
-#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize, EnumIter, EnumCount)]
 pub enum Vehicle {
     MultiVehicle,
     LowTier,
     MiddleTier,
     HighTier,
+    NoVehicle,
 }
