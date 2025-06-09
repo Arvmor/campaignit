@@ -1,3 +1,5 @@
+use serde::Deserialize;
+
 pub struct Individual {
     /// The age of the individual
     pub age: Age,
@@ -20,7 +22,7 @@ pub struct Individual {
 }
 
 /// The age of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Age {
     Newborn,
     Child,
@@ -30,7 +32,7 @@ pub enum Age {
 }
 
 /// The marital status of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum MaritalStatus {
     Single,
     Dating,
@@ -39,7 +41,7 @@ pub enum MaritalStatus {
 }
 
 /// The education of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Education {
     HighSchool,
     University,
@@ -47,7 +49,7 @@ pub enum Education {
 }
 
 /// The religion of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Religion {
     Atheist,
     Christian,
@@ -57,7 +59,7 @@ pub enum Religion {
 }
 
 /// The property of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Property {
     Owned,
     Rented,
@@ -65,7 +67,7 @@ pub enum Property {
 }
 
 /// The gender of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Gender {
     Male,
     TowardsMale,
@@ -75,7 +77,7 @@ pub enum Gender {
 }
 
 /// The region of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Region {
     NorthernAfrica,
     SubSaharanAfrica,
@@ -96,7 +98,7 @@ pub enum Region {
 }
 
 /// The class of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Class {
     LowerClass,
     MiddleClass,
@@ -106,7 +108,7 @@ pub enum Class {
 }
 
 /// The vehicle of the individual
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 pub enum Vehicle {
     MultiVehicle,
     LowTier,
