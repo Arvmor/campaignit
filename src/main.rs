@@ -14,12 +14,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     // Initialize Universe
     let statics = statics::Statics::from_file("statics.json")?;
-    let universe = universe::World::new(&statics, 10)?;
+    let universe = universe::World::new(&statics, 100)?;
 
     // Gether Results per individual
     for individual in universe.individuals {
         let result = individual.ask_model(&mut ollama, prompt.clone()).await?;
-        println!("Response: \t{}\n", result);
+        println!("Response:\t{:?}", result);
     }
 
     Ok(())

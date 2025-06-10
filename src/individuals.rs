@@ -1,4 +1,7 @@
-use crate::{model::send_model_chat, statics::Statics};
+use crate::{
+    model::{ResponseFormat, send_model_chat},
+    statics::Statics,
+};
 use ollama_rs::Ollama;
 use rand::distr::{Distribution, weighted::WeightedIndex};
 use serde::Deserialize;
@@ -68,7 +71,7 @@ impl<'a> Individual<'a> {
         &self,
         client: &mut Ollama,
         prompt: String,
-    ) -> Result<String, Box<dyn Error>> {
+    ) -> Result<ResponseFormat, Box<dyn Error>> {
         let individual = format!(
             "You are an individual with the following information: {:?}",
             &self,

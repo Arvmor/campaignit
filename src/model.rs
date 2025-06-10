@@ -35,7 +35,7 @@ pub async fn send_model_chat(
     client: &mut Ollama,
     prompt: String,
     system: String,
-) -> Result<String, Box<dyn std::error::Error>> {
+) -> Result<ResponseFormat, Box<dyn std::error::Error>> {
     // Create the system message and user prompt
     let history = vec![ChatMessage::system(system)];
     let prompt = vec![ChatMessage::user(prompt)];
@@ -46,5 +46,7 @@ pub async fn send_model_chat(
         .send_chat_messages_with_history(&mut history.clone(), request)
         .await?;
 
-    Ok(result.message.content)
+    // Parse the response
+    let response = serde_json::from_str::<ResponseFormat>(&result.message.content)?;
+    Ok(response)
 }
