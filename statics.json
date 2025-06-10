@@ -1,0 +1,72 @@
+{
+  "age": {
+    "Newborn": 0,
+    "Child": 0,
+    "Teenager": 0,
+    "Adult": 0,
+    "Senior": 0
+  },
+  "class": {
+    "LowerClass": 0,
+    "MiddleClass": 0,
+    "UpperClass": 0,
+    "WorkingClass": 0,
+    "Elite": 0
+  },
+  "gender": {
+    "Male": 0,
+    "TowardsMale": 0,
+    "NonBinary": 0,
+    "TowardsFemale": 0,
+    "Female": 0
+  },
+  "region": {
+    "NorthernAfrica": 0,
+    "SubSaharanAfrica": 0,
+    "CentralAsia": 0,
+    "EasternAsia": 0,
+    "SouthernAsia": 0,
+    "SouthEasternAsia": 0,
+    "WesternAsia": 0,
+    "NorthernEurope": 0,
+    "SouthernEurope": 0,
+    "WesternEurope": 0,
+    "EasternEurope": 0,
+    "NorthernAmerica": 0,
+    "CentralAmerica": 0,
+    "SouthAmerica": 0,
+    "Oceania": 0,
+    "Antarctica": 0
+  },
+  "property": {
+    "Owned": 0,
+    "Rented": 0,
+    "Shared": 0
+  },
+  "religion": {
+    "Atheist": 0,
+    "Christian": 0,
+    "Muslim": 0,
+    "Jewish": 0,
+    "Hindu": 0
+  },
+  "vehicle": {
+    "MultiVehicle": 0,
+    "LowTier": 0,
+    "MiddleTier": 0,
+    "HighTier": 0,
+    "NoVehicle": 0
+  },
+  "education": {
+    "HighSchool": 0,
+    "University": 0,
+    "Postgraduate": 0,
+    "NoEducation": 0
+  },
+  "marital_status": {
+    "Single": 0,
+    "Dating": 0,
+    "Married": 0,
+    "Divorced": 0
+  }
+}
