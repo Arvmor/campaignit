@@ -37,7 +37,7 @@ mod statics_tests {
     #[test]
     fn test_statics_from_file() {
         let statics = Statics::from_file("statics.json");
-        println!("{:?}", statics);
+
         assert!(statics.is_ok());
     }
 }

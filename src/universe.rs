@@ -14,9 +14,9 @@ pub struct World<'a> {
 
 impl<'a> World<'a> {
     /// Create a new world
-    pub fn new(stats: &'a Statics, population: u64) -> Result<Self, Box<dyn Error>> {
+    pub fn new(stats: &'a Statics, population: usize) -> Result<Self, Box<dyn Error>> {
         let time = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
-        let mut individuals = Vec::new();
+        let mut individuals = Vec::with_capacity(population);
 
         // Create Individuals tied to the statics
         for _ in 0..population {
@@ -35,7 +35,8 @@ mod universe_tests {
     #[test]
     fn test_new_world() {
         let stats = Statics::default();
-        let world = World::new(&stats, 1);
+        let population = 0;
+        let world = World::new(&stats, population);
 
         assert!(world.is_ok());
     }
