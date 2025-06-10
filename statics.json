@@ -1,72 +1,72 @@
 {
   "age": {
-    "Newborn": 0,
-    "Child": 0,
-    "Teenager": 0,
-    "Adult": 0,
-    "Senior": 0
+    "Newborn": 2,
+    "Child": 29,
+    "Teenager": 15,
+    "Adult": 55,
+    "Senior": 12
   },
   "class": {
-    "LowerClass": 0,
-    "MiddleClass": 0,
-    "UpperClass": 0,
-    "WorkingClass": 0,
-    "Elite": 0
+    "LowerClass": 30,
+    "MiddleClass": 50,
+    "UpperClass": 15,
+    "WorkingClass": 60,
+    "Elite": 1
   },
   "gender": {
-    "Male": 0,
-    "TowardsMale": 0,
-    "NonBinary": 0,
-    "TowardsFemale": 0,
-    "Female": 0
+    "Male": 50,
+    "TowardsMale": 1,
+    "NonBinary": 1,
+    "TowardsFemale": 1,
+    "Female": 47
   },
   "region": {
-    "NorthernAfrica": 0,
-    "SubSaharanAfrica": 0,
-    "CentralAsia": 0,
-    "EasternAsia": 0,
-    "SouthernAsia": 0,
-    "SouthEasternAsia": 0,
-    "WesternAsia": 0,
-    "NorthernEurope": 0,
-    "SouthernEurope": 0,
-    "WesternEurope": 0,
-    "EasternEurope": 0,
-    "NorthernAmerica": 0,
-    "CentralAmerica": 0,
-    "SouthAmerica": 0,
-    "Oceania": 0,
+    "NorthernAfrica": 4,
+    "SubSaharanAfrica": 14,
+    "CentralAsia": 2,
+    "EasternAsia": 21,
+    "SouthernAsia": 25,
+    "SouthEasternAsia": 8,
+    "WesternAsia": 6,
+    "NorthernEurope": 2,
+    "SouthernEurope": 3,
+    "WesternEurope": 3,
+    "EasternEurope": 4,
+    "NorthernAmerica": 5,
+    "CentralAmerica": 2,
+    "SouthAmerica": 6,
+    "Oceania": 1,
     "Antarctica": 0
   },
   "property": {
-    "Owned": 0,
-    "Rented": 0,
-    "Shared": 0
+    "Owned": 60,
+    "Rented": 30,
+    "Shared": 10
   },
   "religion": {
-    "Atheist": 0,
-    "Christian": 0,
-    "Muslim": 0,
-    "Jewish": 0,
-    "Hindu": 0
+    "Atheist": 24,
+    "Christian": 29,
+    "Muslim": 26,
+    "Jewish": 6,
+    "Hindu": 15
   },
   "vehicle": {
-    "MultiVehicle": 0,
-    "LowTier": 0,
-    "MiddleTier": 0,
-    "HighTier": 0,
-    "NoVehicle": 0
+    "MultiVehicle": 10,
+    "LowTier": 20,
+    "MiddleTier": 15,
+    "HighTier": 5,
+    "NoVehicle": 50
   },
   "education": {
-    "HighSchool": 0,
-    "University": 0,
-    "Postgraduate": 0,
-    "NoEducation": 0
+    "HighSchool": 35,
+    "University": 30,
+    "Postgraduate": 20,
+    "NoEducation": 15
   },
   "marital_status": {
-    "Single": 0,
-    "Dating": 0,
-    "Married": 0,
-    "Divorced": 0
+    "Single": 25,
+    "Dating": 5,
+    "Married": 60,
+    "Divorced": 10
   }
 }
