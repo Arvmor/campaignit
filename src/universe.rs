@@ -1,6 +1,5 @@
 use crate::{individuals::Individual, statics::Statics};
 use std::{
-    collections::HashMap,
     error::Error,
     time::{SystemTime, UNIX_EPOCH},
 };
@@ -15,7 +14,7 @@ pub struct World<'a> {
 
 impl<'a> World<'a> {
     /// Create a new world
-    pub fn new(stats: &'a HashMap<Statics, u64>, population: u64) -> Result<Self, Box<dyn Error>> {
+    pub fn new(stats: &'a Statics, population: u64) -> Result<Self, Box<dyn Error>> {
         let time = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
         let mut individuals = Vec::new();
 
@@ -35,7 +34,7 @@ mod universe_tests {
 
     #[test]
     fn test_new_world() {
-        let stats = HashMap::new();
+        let stats = Statics::default();
         let world = World::new(&stats, 1);
 
         assert!(world.is_ok());
