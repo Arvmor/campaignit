@@ -1,4 +1,5 @@
-use crate::statics::Statics;
+use crate::{model::send_model_chat, statics::Statics};
+use ollama_rs::Ollama;
 use rand::distr::{Distribution, weighted::WeightedIndex};
 use serde::Deserialize;
 use std::error::Error;
@@ -61,6 +62,19 @@ impl<'a> Individual<'a> {
             education,
             marital_status,
         })
+    }
+
+    pub async fn ask_model(
+        &self,
+        client: &mut Ollama,
+        prompt: String,
+    ) -> Result<String, Box<dyn Error>> {
+        let individual = format!(
+            "You are an individual with the following information: {:?}",
+            &self,
+        );
+
+        send_model_chat(client, prompt, individual).await
     }
 }
 
